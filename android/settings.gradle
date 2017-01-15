@@ -1,0 +1,3 @@
+rootProject.name = 'QuoteMachine'
+
+include ':app'
