@@ -11,14 +11,39 @@ import axios from 'axios';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#3F51B5',
+    padding: 15,
+  },
+  innerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  author: {
+    fontSize: 20,
+    color: '#f8f8f8',
+    textAlign: 'right',
+    fontStyle: 'italic',
+    marginRight: 10,
+  },
+  quote: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginVertical: 30,
+  },
+  btn: {
+    width: 150,
+    padding: 15,
+    borderRadius: 5,
+    borderColor: '#fff',
+    borderWidth: 2,
+    marginBottom: 60,
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
+    color: '#fff',
     textAlign: 'center',
-    margin: 10,
   },
 });
 
@@ -75,15 +100,20 @@ class QuoteMachine extends Component {
     return (
       <View style={styles.container}>
         {/* render fetched data */}
-        <Text style={styles.text}>
-          "{quote}"
-        </Text>
-        <Text style={styles.text}>
-          - {author}
-        </Text>
+        <View style={styles.innerContainer}>
+          <Text style={styles.quote}>
+            "{quote}"
+          </Text>
+          <Text style={styles.author}>
+            - {author}
+          </Text>
+        </View>
 
         {/* when pressed calls this.getQuote method */}
-        <TouchableOpacity onPress={this.getQuote}>
+        <TouchableOpacity
+          onPress={this.getQuote}
+          style={styles.btn}
+        >
           <Text style={styles.text}>
             New Quote
           </Text>
