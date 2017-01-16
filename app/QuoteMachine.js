@@ -5,6 +5,9 @@ import {
   View,
   TouchableOpacity,
   Alert,
+  LayoutAnimation,
+  Platform,
+  UIManager,
 } from 'react-native';
 import axios from 'axios';
 
@@ -46,6 +49,26 @@ const styles = StyleSheet.create({
   },
 });
 
+// Custom animation
+const animate = {
+  duration: 500,
+  create: {
+    duration: 1000,
+    delay: 300,
+    type: LayoutAnimation.Types.easeIn,
+    property: LayoutAnimation.Properties.opacity,
+  },
+  update: {
+    type: LayoutAnimation.Types.easeInEaseOut,
+    property: LayoutAnimation.Properties.opacity,
+  },
+  delete: {
+    duration: 200,
+    type: LayoutAnimation.Types.easeOut,
+    property: LayoutAnimation.Properties.opacity,
+  },
+};
+
 // Quotes API endpoint, with list of required parameters
 let URL = 'http://api.forismatic.com/api/1.0/';
 const METHOD = 'getQuote';
@@ -56,6 +79,12 @@ const LANG = 'en';
 class QuoteMachine extends Component {
   constructor(props) {
     super(props);
+    // In order to get LayoutAnimation work on Android we need to set the
+    // following flags
+    if (Platform.OS === 'android') {
+      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+
     // Initialize state with quote and author empty string properties
     this.state = {
       quote: '',
@@ -66,6 +95,11 @@ class QuoteMachine extends Component {
   componentDidMount() {
     // Perform a GET request to fetch random quote when component has mounted
     this.getQuote();
+  }
+
+  componentWillUpdate() {
+    // Before every component update custom animation will trigger
+    LayoutAnimation.configureNext(animate);
   }
 
   // Method that performs a GET request to API end point
