@@ -10,7 +10,7 @@ class ShareComponent extends Component {
     return (
       <TouchableOpacity
         onPress={() => {}}
-        style={styles.shareBtn}
+        style={styles.btn}
       >
         <Text style={styles.text}>
           Share

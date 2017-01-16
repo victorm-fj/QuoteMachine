@@ -131,20 +131,22 @@ class QuoteMachine extends Component {
           </Text>
         </View>
 
-        {/* when pressed calls this.getQuote method */}
-        <TouchableOpacity
-          onPress={this.getQuote}
-          style={styles.btn}
-        >
-          <Text style={styles.text}>
-            New Quote
-          </Text>
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+          <ShareComponent
+            author={author}
+            quote={quote}
+          />
 
-        <ShareComponent
-          author={author}
-          quote={quote}
-        />
+          {/* when pressed calls this.getQuote method */}
+          <TouchableOpacity
+            onPress={this.getQuote}
+            style={styles.btn}
+          >
+            <Text style={styles.text}>
+              New Quote
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

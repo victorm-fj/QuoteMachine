@@ -28,16 +28,15 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     borderColor: '#fff',
-    borderWidth: 2,
+    borderWidth: 3,
+    marginHorizontal: 30,
+    marginBottom: 10,
   },
   text: {
     fontSize: 18,
+    fontWeight: '500',
     color: '#fff',
     textAlign: 'center',
-  },
-  shareBtn: {
-    width: 150,
-    padding: 15,
   },
 });
 
