@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#fff',
     borderWidth: 2,
-    marginBottom: 60,
+    marginBottom: 15,
   },
   text: {
     fontSize: 18,
@@ -83,9 +83,18 @@ class QuoteMachine extends Component {
       console.log(response);
       const { quoteAuthor, quoteText } = response.data;
 
+      // Sometimes fetched data's quoteAuthor is an anynomous one,
+      // and then it returns an empty string
+      let author;
+      if (quoteAuthor === '') {
+        author = 'Anonymous';
+      } else {
+        author = quoteAuthor;
+      }
+
       this.setState({
         quote: quoteText,
-        author: quoteAuthor,
+        author,
       });
     })
     .catch((error) => {
