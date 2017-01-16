@@ -29,12 +29,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#fff',
     borderWidth: 2,
-    marginBottom: 15,
   },
   text: {
     fontSize: 18,
     color: '#fff',
     textAlign: 'center',
+  },
+  shareBtn: {
+    width: 150,
+    padding: 15,
   },
 });
 

@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 
 import styles from './styles';
+import ShareComponent from './ShareComponent';
 
 // Custom animation
 const animate = {
@@ -139,6 +140,11 @@ class QuoteMachine extends Component {
             New Quote
           </Text>
         </TouchableOpacity>
+
+        <ShareComponent
+          author={author}
+          quote={quote}
+        />
       </View>
     );
   }
