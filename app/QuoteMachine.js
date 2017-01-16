@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#3F51B5',
     padding: 15,
   },
   innerContainer: {
@@ -103,11 +102,27 @@ class QuoteMachine extends Component {
     });
   }
 
+  // Generate random color
+  randomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    console.log(r, g, b);
+    const rgb = `rgb(${r}, ${g}, ${b})`;
+
+    return rgb;
+  }
+
   render() {
     const { quote, author } = this.state;
+    // Call randomColor function everytime component renders, that is
+    // when state changes
+    const rgbColor = this.randomColor();
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: rgbColor }]}>
+        {/* ^Change backgroundColor according to generated random Color, and merge styles^ */}
+
         {/* render fetched data */}
         <View style={styles.innerContainer}>
           <Text style={styles.quote}>
